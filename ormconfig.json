@@ -1,10 +1,10 @@
 {
   "type": "postgres",
   "host": "localhost",
-  "port": 8432,
+  "port": 5432,
   "username": "postgres",
   "password": "123456",
-  "database": "vehicles",
+  "database": "top_treino",
   "entities": [
     "./src/modules/**/infra/typeorm/entities/*.ts"
  ],
