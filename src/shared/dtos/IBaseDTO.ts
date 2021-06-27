@@ -1,4 +1,5 @@
+/* eslint-disable semi */
 export default interface IBaseDTO {
-    id: string;
+    // id: string;
     is_active: boolean;
 }

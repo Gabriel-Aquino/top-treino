@@ -5,11 +5,9 @@ export class BEntity {
     @PrimaryColumn()
     id: string;
 
-    constructor(id: string) {
-      if (!id) {
+    constructor() {
+      if (!this.id) {
         this.id = uuid();
-      } else {
-        this.id = id;
       }
     }
 }

@@ -10,9 +10,8 @@ export default class ProfilesRepository implements IProfilesRepository {
       this.ormRepository = getRepository(Profiles);
     }
 
-    async create({ id, is_active, name }: IProfilesDTO): Promise<Profiles> {
+    async create({ is_active, name }: IProfilesDTO): Promise<Profiles> {
       const createProfile = this.ormRepository.create({
-        id,
         name,
         is_active,
       });
@@ -40,7 +39,7 @@ export default class ProfilesRepository implements IProfilesRepository {
 
     async findByName(name: string): Promise<Profiles[] | undefined> {
       const findOneProfileByName = await this.ormRepository.find({
-        name: Like(`%${name}`),
+        name: Like(`%${name}%`),
       });
 
       return findOneProfileByName;
