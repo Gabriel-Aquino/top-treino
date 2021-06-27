@@ -1,11 +1,9 @@
-/* eslint-disable no-useless-constructor */
-import { Users } from 'modules/users/infra/typeorm/entities/Users.entities';
 import { BEntity } from 'shared/infra/typeorm/entities/BEntity';
 import {
-  Column, Entity, ManyToOne,
+  Column, Entity,
 } from 'typeorm';
 
-  @Entity('users')
+  @Entity('profile')
 export class Profiles extends BEntity {
       @Column()
       name: string;
@@ -18,11 +16,4 @@ export class Profiles extends BEntity {
 
       @Column()
       updated_at: Date;
-
-      @ManyToOne(() => Users, (users) => users.profile_id)
-      user: Users
-
-      constructor(id: string) {
-        super(id);
-      }
 }

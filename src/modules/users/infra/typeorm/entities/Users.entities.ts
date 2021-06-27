@@ -1,8 +1,7 @@
-/* eslint-disable no-useless-constructor */
 import { Profiles } from 'modules/profiles/infra/typeorm/entities/Profiles.entities';
 import { BEntity } from 'shared/infra/typeorm/entities/BEntity';
 import {
-  Column, Entity, OneToMany,
+  Column, Entity, JoinColumn, ManyToOne,
 } from 'typeorm';
 
 @Entity('users')
@@ -19,16 +18,13 @@ export class Users extends BEntity {
     @Column()
     is_active: boolean
 
-    @OneToMany(() => Profiles, (profiles) => profiles.user)
-    profile_id: Profiles[];
+    @ManyToOne(() => Profiles)
+    @JoinColumn({ name: 'profiles_id', referencedColumnName: 'id' })
+    profile_id: Profiles;
 
     @Column()
     created_at: Date;
 
     @Column()
     updated_at: Date;
-
-    constructor(id: string) {
-      super(id);
-    }
 }

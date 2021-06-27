@@ -14,15 +14,8 @@ export default class CreateProfilesService {
         private profilesRepository: IProfilesRepository,
   ) {}
 
-  public async execute({ id, is_active, name }: IRequest): Promise<Profiles> {
-    const findProfileById = await this.profilesRepository.findById(id);
-
-    if (findProfileById) {
-      throw new Error('Profile already exists');
-    }
-
+  public async execute({ is_active, name }: IRequest): Promise<Profiles> {
     const profile = await this.profilesRepository.create({
-      id,
       is_active,
       name,
     });
