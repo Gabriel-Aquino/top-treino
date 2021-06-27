@@ -3,7 +3,7 @@ import { v4 as uuid } from 'uuid';
 
 export class BEntity {
     @PrimaryColumn()
-    readonly id: string;
+    id: string;
 
     constructor(id: string) {
       if (!id) {
