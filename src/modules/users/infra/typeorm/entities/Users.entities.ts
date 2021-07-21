@@ -1,8 +1,8 @@
-import { Profiles } from 'modules/profiles/infra/typeorm/entities/Profiles.entities';
-import { BEntity } from 'shared/infra/typeorm/entities/BEntity';
+import { Profiles } from '@modules/profiles/infra/typeorm/entities/Profiles.entities';
 import {
   Column, Entity, JoinColumn, ManyToOne,
 } from 'typeorm';
+import { BEntity } from '../../../../../shared/infra/typeorm/entities/BEntity';
 
 @Entity('users')
 export class Users extends BEntity {

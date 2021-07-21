@@ -1,15 +1,15 @@
-import IProfilesDTO from 'modules/profiles/dtos/IProfilesDTO';
-import { Profiles } from 'modules/profiles/infra/typeorm/entities/Profiles.entities';
+import IProfilesDTO from '@modules/profiles/dtos/IProfilesDTO';
 import { v4 as uuid } from 'uuid';
+import { Profiles } from '@modules/profiles/infra/typeorm/entities/Profiles.entities';
 import IProfilesRepository from '../dtos/IProfilesRepository';
 
 export default class FakesProfilesRepository implements IProfilesRepository {
     private profiles: Profiles[] = [];
 
-    public async create({ is_active, name }: IProfilesDTO): Promise<Profiles> {
+    public async create({ name }: IProfilesDTO): Promise<Profiles> {
       const createOneProfile = new Profiles();
 
-      Object.assign(createOneProfile, { id: uuid(), is_active, name });
+      Object.assign(createOneProfile, { id: uuid(), name });
 
       this.profiles.push(createOneProfile);
 

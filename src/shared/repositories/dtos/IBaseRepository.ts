@@ -1,8 +1,8 @@
-import IBaseDTO from 'shared/dtos/IBaseDTO';
-import { BEntity } from 'shared/infra/typeorm/entities/BEntity';
+import IBaseDTO from '@shared/dtos/IBaseDTO';
+import { BEntity } from '@shared/infra/typeorm/entities/BEntity';
 
 /* eslint-disable no-unused-vars */
-export default interface IBaseRepository<T extends IBaseDTO, A extends BEntity> {
+interface IBaseRepository<T extends IBaseDTO, A extends BEntity> {
     create(dtoEntity: T): Promise<A>;
     findAll(): Promise<A[]>;
     findById(id: string): Promise<A | undefined>;
@@ -10,3 +10,5 @@ export default interface IBaseRepository<T extends IBaseDTO, A extends BEntity> 
     // remove(id: string): Promise<void>;
     save(entity: A): Promise<A>;
 }
+
+export default IBaseRepository;

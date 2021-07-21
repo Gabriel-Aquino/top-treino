@@ -1,5 +1,6 @@
-import IBaseDTO from 'shared/dtos/IBaseDTO';
+import IBaseDTO from '@shared/dtos/IBaseDTO';
 
-export default interface IProfilesDTO extends IBaseDTO{
+interface IProfilesDTO extends IBaseDTO{
     name: string;
 }
+export default IProfilesDTO;

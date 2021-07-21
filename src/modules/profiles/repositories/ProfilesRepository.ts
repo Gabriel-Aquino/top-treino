@@ -1,6 +1,6 @@
 import { getRepository, Like, Repository } from 'typeorm';
-import IProfilesDTO from '../dtos/IProfilesDTO';
-import { Profiles } from '../infra/typeorm/entities/Profiles.entities';
+import IProfilesDTO from '@modules/profiles/dtos/IProfilesDTO';
+import { Profiles } from '@modules/profiles/infra/typeorm/entities/Profiles.entities';
 import IProfilesRepository from './dtos/IProfilesRepository';
 
 export default class ProfilesRepository implements IProfilesRepository {
@@ -10,10 +10,9 @@ export default class ProfilesRepository implements IProfilesRepository {
       this.ormRepository = getRepository(Profiles);
     }
 
-    async create({ is_active, name }: IProfilesDTO): Promise<Profiles> {
+    async create({ name }: IProfilesDTO): Promise<Profiles> {
       const createProfile = this.ormRepository.create({
         name,
-        is_active,
       });
 
       await this.ormRepository.save(createProfile);

@@ -1,7 +1,8 @@
 {
     "env": {
         "es2021": true,
-        "node": true
+        "node": true,
+        "jest": true
     },
     "extends": [
         "airbnb-base"
@@ -13,6 +14,7 @@
     },
     "plugins": [
         "@typescript-eslint"
+        
     ],
     "rules": {
       "class-methods-use-this": "off",
@@ -20,7 +22,7 @@
       "import/extensions": "off",
       "import/prefer-default-export": "off",
       "camelcase": "off",
-    //   "no-extra-semi": "off",
+    //  "no-extra-semi": "off",
     //   "semi":"off",
       "no-useless-constructor": "off",
       "no-empty-function": "off",
