@@ -3,7 +3,7 @@ import { Profiles } from '../infra/typeorm/entities/Profiles.entities';
 import IProfilesRepository from '../repositories/dtos/IProfilesRepository';
 
 @injectable()
-export default class FindOneProfileByNameService {
+export default class FindProfileByNameService {
   constructor(
         @inject('ProfilesRepository')
         private profilesRepository: IProfilesRepository,
