@@ -15,7 +15,6 @@ export default class FindProfileByNameService {
     if (findOneProfileByName?.length == undefined || findOneProfileByName?.length == 0) {
       throw new Error('There is no one profile registered with this name');
     }
-
     return findOneProfileByName;
   }
 }

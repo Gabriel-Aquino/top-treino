@@ -19,7 +19,6 @@ describe('FindProfileByName', () => {
   it('should be not able to find one profile if name not exists', async () => {
     const fakeProfilesRepository = new FakesProfilesRepository();
     const findProfileByName = new FindProfileByNameService(fakeProfilesRepository);
-
     await expect(
       findProfileByName.execute('non-existing-profile-name'),
     ).rejects.toBeInstanceOf(Error);
