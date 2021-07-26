@@ -13,6 +13,15 @@ describe('FindProfileByName', () => {
 
     const profileName = await findProfileByName.execute(profile.name);
 
-    expect(profileName).toBeInstanceOf(Array);
+    expect(profileName).not.toHaveLength(0);
+  });
+
+  it('should be not able to find one profile if name not exists', async () => {
+    const fakeProfilesRepository = new FakesProfilesRepository();
+    const findProfileByName = new FindProfileByNameService(fakeProfilesRepository);
+
+    await expect(
+      findProfileByName.execute('non-existing-profile-name'),
+    ).rejects.toBeInstanceOf(Error);
   });
 });
