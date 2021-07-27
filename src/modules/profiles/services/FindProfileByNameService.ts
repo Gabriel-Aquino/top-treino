@@ -12,7 +12,7 @@ export default class FindProfileByNameService {
   public async execute(name: string): Promise<Profiles[] | undefined> {
     const findOneProfileByName = await this.profilesRepository.findByName(name);
 
-    if (findOneProfileByName?.length == undefined || findOneProfileByName?.length == 0) {
+    if (findOneProfileByName?.length === undefined || findOneProfileByName?.length === 0) {
       throw new Error('There is no one profile registered with this name');
     }
     return findOneProfileByName;
