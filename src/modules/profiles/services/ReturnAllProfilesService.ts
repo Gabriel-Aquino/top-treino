@@ -12,10 +12,9 @@ export default class ReturnAllProfilesService {
   public async execute(): Promise<Profiles[]> {
     const profile = await this.profilesRepository.findAll();
 
-    if (!profile) {
+    if (profile?.length === undefined || profile?.length === 0) {
       throw new Error('There is no one profile registered');
     }
-
     return profile;
   }
 }

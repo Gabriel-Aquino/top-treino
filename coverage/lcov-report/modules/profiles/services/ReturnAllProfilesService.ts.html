@@ -3,7 +3,7 @@
 <html lang="en">
 
 <head>
-    <title>Code coverage report for modules/profiles/services/FindProfileByNameService.ts</title>
+    <title>Code coverage report for modules/profiles/services/ReturnAllProfilesService.ts</title>
     <meta charset="utf-8" />
     <link rel="stylesheet" href="../../../prettify.css" />
     <link rel="stylesheet" href="../../../base.css" />
@@ -19,7 +19,7 @@
 <body>
 <div class='wrapper'>
     <div class='pad1'>
-        <h1><a href="../../../index.html">All files</a> / <a href="index.html">modules/profiles/services</a> FindProfileByNameService.ts</h1>
+        <h1><a href="../../../index.html">All files</a> / <a href="index.html">modules/profiles/services</a> ReturnAllProfilesService.ts</h1>
         <div class='clearfix'>
             
             <div class='fl pad1y space-right2'>
@@ -102,19 +102,19 @@ import { Profiles } from '../infra/typeorm/entities/Profiles.entities';
 import IProfilesRepository from '../repositories/dtos/IProfilesRepository';
 &nbsp;
 @injectable()
-export default class FindProfileByNameService {
+export default class ReturnAllProfilesService {
   constructor(
-    @inject('ProfilesRepository')
-    private profilesRepository: IProfilesRepository,
-  ) { }
+        @inject('ProfilesRepository')
+        private profilesRepository: IProfilesRepository,
+  ) {}
 &nbsp;
-  public async execute(name: string): Promise&lt;Profiles[] | undefined&gt; {
-    const findOneProfileByName = await this.profilesRepository.findByName(name);
+  public async execute(): Promise&lt;Profiles[]&gt; {
+    const profile = await this.profilesRepository.findAll();
 &nbsp;
-    if (findOneProfileByName<span class="branch-0 cbranch-no" title="branch not covered" >?.l</span>ength === undefined || findOneProfileByName<span class="branch-0 cbranch-no" title="branch not covered" >?.l</span>ength === 0) {
-      throw new Error('There is no one profile registered with this name');
+    if (profile<span class="branch-0 cbranch-no" title="branch not covered" >?.l</span>ength === undefined || profile<span class="branch-0 cbranch-no" title="branch not covered" >?.l</span>ength === 0) {
+      throw new Error('There is no one profile registered');
     }
-    return findOneProfileByName;
+    return profile;
   }
 }
 &nbsp;</pre></td></tr></table></pre>

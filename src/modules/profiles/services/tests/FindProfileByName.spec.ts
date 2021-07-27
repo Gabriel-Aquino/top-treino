@@ -1,4 +1,4 @@
-import { Profiles } from '@modules/profiles/infra/typeorm/entities/Profiles.entities';
+import 'reflect-metadata';
 import FakesProfilesRepository from '@modules/profiles/repositories/fakes/FakesProfilesRepository';
 import FindProfileByNameService from '../FindProfileByNameService';
 
@@ -13,7 +13,7 @@ describe('FindProfileByName', () => {
 
     const profileName = await findProfileByName.execute(profile.name);
 
-    expect(profileName).not.toHaveLength(0);
+    expect(profileName).toContain(profile);
   });
 
   it('should be not able to find one profile if name not exists', async () => {
