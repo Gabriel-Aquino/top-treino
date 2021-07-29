@@ -1,11 +1,7 @@
-import IBaseDTO from '@shared/dtos/IBaseDTO';
 import { inject, injectable } from 'tsyringe';
+import IProfilesDTO from '../dtos/IProfilesDTO';
 import { Profiles } from '../infra/typeorm/entities/Profiles.entities';
 import IProfilesRepository from '../repositories/dtos/IProfilesRepository';
-
-interface IRequest extends IBaseDTO{
-    name: string;
-}
 
 @injectable()
 export default class CreateProfilesService {
@@ -14,7 +10,7 @@ export default class CreateProfilesService {
         private profilesRepository: IProfilesRepository,
   ) {}
 
-  public async execute({ name }: IRequest): Promise<Profiles> {
+  public async execute({ name }: IProfilesDTO): Promise<Profiles> {
     const profile = await this.profilesRepository.create({
       name,
     });

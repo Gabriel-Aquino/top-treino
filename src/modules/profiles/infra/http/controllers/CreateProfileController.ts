@@ -5,8 +5,8 @@ import { container } from 'tsyringe';
 export default class CreateProfileController {
   public async handle(request: Request, response: Response): Promise<Response> {
     const { name } = request.body;
-    const createNewProfile = container.resolve(CreateProfilesService);
 
+    const createNewProfile = container.resolve(CreateProfilesService);
     const newProfile = await createNewProfile.execute({
       name,
     });
