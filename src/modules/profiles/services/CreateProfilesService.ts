@@ -2,6 +2,7 @@ import { inject, injectable } from 'tsyringe';
 import IProfilesDTO from '../dtos/IProfilesDTO';
 import { Profiles } from '../infra/typeorm/entities/Profiles.entities';
 import IProfilesRepository from '../repositories/dtos/IProfilesRepository';
+import 'reflect-metadata';
 
 @injectable()
 export default class CreateProfilesService {

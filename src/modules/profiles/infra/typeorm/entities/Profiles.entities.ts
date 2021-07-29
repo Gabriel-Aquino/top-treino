@@ -12,9 +12,9 @@ export class Profiles extends BEntity {
       @Column()
       is_active: boolean;
 
-      @Column()
+      @Column('timestamp')
       created_at: Date;
 
-      @Column()
+      @Column('timestamp')
       updated_at: Date;
 }
