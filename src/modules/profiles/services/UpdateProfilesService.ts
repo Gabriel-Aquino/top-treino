@@ -1,10 +1,12 @@
-import IBaseDTO from 'shared/dtos/IBaseDTO';
+import IBaseDTO from '@shared/dtos/IBaseDTO';
 import { inject, injectable } from 'tsyringe';
 import { Profiles } from '../infra/typeorm/entities/Profiles.entities';
 import IProfilesRepository from '../repositories/dtos/IProfilesRepository';
 
 interface IRequest extends IBaseDTO{
+    id: string;
     name: string;
+    is_active: boolean;
 }
 
 @injectable()
