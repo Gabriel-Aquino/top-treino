@@ -1,7 +1,7 @@
+import 'reflect-metadata';
 import {
   Column, Entity,
 } from 'typeorm';
-import 'reflect-metadata';
 import { BEntity } from '@shared/infra/typeorm/entities/BEntity';
 
   @Entity('profile')
