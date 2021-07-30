@@ -1,10 +1,9 @@
-/* import 'reflect-metadata';
+import 'reflect-metadata';
 import { createConnection } from 'typeorm';
 
-createConnection();
- */
+export default async () => createConnection();
 
-import { Connection, createConnection } from 'typeorm';
+/* import { Connection, createConnection } from 'typeorm';
 import ormConfig from '../../../../ormconfig';
 
 const connection = async (name = 'default'): Promise<Connection> => createConnection(
@@ -13,4 +12,4 @@ const connection = async (name = 'default'): Promise<Connection> => createConnec
   }),
 );
 
-export default connection;
+export default connection; */

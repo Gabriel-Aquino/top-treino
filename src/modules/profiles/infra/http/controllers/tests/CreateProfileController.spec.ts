@@ -1,20 +1,18 @@
 import 'reflect-metadata';
 import request from 'supertest';
 import { app } from '@shared/infra/http/app';
-import createConnection from '@shared/infra/typeorm';
-import { Connection, getConnection } from 'typeorm';
+import { Connection } from 'typeorm';
+import connect from '@shared/infra/typeorm';
 
 let connection: Connection;
 
 describe('Create Profile Controller', () => {
   beforeAll(async () => {
-    connection = await createConnection();
+    connection = await connect();
   });
 
   afterAll(async () => {
-    const myConnection = getConnection();
-    // await connection.close();
-    await myConnection.close();
+    await connection.close();
   });
   it('should be able to create a real profile', async () => {
     const response = await request(app).post('/profiles').send({
