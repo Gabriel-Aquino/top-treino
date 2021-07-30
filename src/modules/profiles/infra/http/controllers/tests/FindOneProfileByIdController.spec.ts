@@ -6,7 +6,7 @@ import connect from '@shared/infra/typeorm';
 
 let connection: Connection;
 
-describe('Create Profile Controller', () => {
+describe('Find One Profile Controller', () => {
   beforeAll(async () => {
     connection = await connect();
   });
@@ -14,12 +14,11 @@ describe('Create Profile Controller', () => {
   afterAll(async () => {
     await connection.close();
   });
-  it('should be able to create a real profile', async () => {
-    const response = await request(app).post('/profiles').send({
+  it('should be able to find only one real profile', async () => {
+    /* const response = await request(app).post(`/profiles/${id}`).send({
       name: 'Admin-integration-test',
     });
 
-    expect(response.status).toBe(200);
-    expect(response.body).toHaveProperty('id');
+    expect(response.status).toBe(200); */
   });
 });

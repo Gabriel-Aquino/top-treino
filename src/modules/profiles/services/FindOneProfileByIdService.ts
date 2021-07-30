@@ -1,6 +1,12 @@
+import IBaseDTO from '@shared/dtos/IBaseDTO';
 import { inject, injectable } from 'tsyringe';
 import { Profiles } from '../infra/typeorm/entities/Profiles.entities';
 import IProfilesRepository from '../repositories/dtos/IProfilesRepository';
+
+interface IRequest extends IBaseDTO{
+  id: string;
+ // name: string;
+}
 
 @injectable()
 export default class FindOneProfileByIdService {
@@ -9,7 +15,7 @@ export default class FindOneProfileByIdService {
         private profilesRepository: IProfilesRepository,
   ) {}
 
-  public async execute(id: string): Promise<Profiles | undefined> {
+  public async execute({ id }: IRequest): Promise<Profiles | undefined> {
     const findOneProfileById = await this.profilesRepository.findById(id);
 
     if (!findOneProfileById) {

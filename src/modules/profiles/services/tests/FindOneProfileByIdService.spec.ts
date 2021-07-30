@@ -10,7 +10,7 @@ describe('FindOneProfile', () => {
       name: 'Admin',
     });
 
-    const profileFound = await findOneProfileById.execute(profile.id);
+    const profileFound = await findOneProfileById.execute({ id: profile.id });
 
     expect(profileFound?.id).toEqual(profile.id);
   });
@@ -20,7 +20,7 @@ describe('FindOneProfile', () => {
     const findOneProfileById = new FindOneProfileByIdService(fakeProfilesRepository);
 
     await expect(
-      findOneProfileById.execute(''),
+      findOneProfileById.execute({ id: '' }),
     ).rejects.toBeInstanceOf(Error);
   });
 });
