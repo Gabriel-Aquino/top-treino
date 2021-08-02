@@ -1,3 +1,4 @@
+import AppError from '@shared/errors/AppError';
 import { inject, injectable } from 'tsyringe';
 import { Profiles } from '../infra/typeorm/entities/Profiles.entities';
 import IProfilesRepository from '../repositories/dtos/IProfilesRepository';
@@ -13,7 +14,7 @@ export default class FindProfileByNameService {
     const findOneProfileByName = await this.profilesRepository.findByName(name);
 
     if (findOneProfileByName?.length === undefined || findOneProfileByName?.length === 0) {
-      throw new Error('There is no one profile registered with this name');
+      throw new AppError('There is no one profile registered with this name', 400);
     }
     return findOneProfileByName;
   }

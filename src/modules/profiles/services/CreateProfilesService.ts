@@ -7,9 +7,9 @@ import 'reflect-metadata';
 @injectable()
 export default class CreateProfilesService {
   constructor(
-        @inject('ProfilesRepository')
-        private profilesRepository: IProfilesRepository,
-  ) {}
+    @inject('ProfilesRepository')
+    private profilesRepository: IProfilesRepository,
+  ) { }
 
   public async execute({ name }: IProfilesDTO): Promise<Profiles> {
     const profile = await this.profilesRepository.create({

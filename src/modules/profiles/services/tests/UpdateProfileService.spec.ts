@@ -1,16 +1,13 @@
 import IProfilesRepository from '@modules/profiles/repositories/dtos/IProfilesRepository';
 import FakesProfilesRepository from '@modules/profiles/repositories/fakes/FakesProfilesRepository';
 import 'reflect-metadata';
-import CreateProfilesService from '../CreateProfilesService';
 import UpdateProfilesService from '../UpdateProfilesService';
 
 describe('Update Profile Service', () => {
   let fakeProfileRepository: IProfilesRepository;
-  let createProfile: CreateProfilesService;
   let updateProfile: UpdateProfilesService;
   beforeAll(() => {
     fakeProfileRepository = new FakesProfilesRepository();
-    createProfile = new CreateProfilesService(fakeProfileRepository);
     updateProfile = new UpdateProfilesService(fakeProfileRepository);
   });
 

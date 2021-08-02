@@ -15,10 +15,16 @@ describe('Find One Profile Controller', () => {
     await connection.close();
   });
   it('should be able to find only one real profile', async () => {
-    /* const response = await request(app).post(`/profiles/${id}`).send({
-      name: 'Admin-integration-test',
+    const profileCreated = await request(app).post('/profiles').send({
+      name: 'Admin-integration-test-findOne',
     });
+    expect(profileCreated.body).toHaveProperty('id');
 
-    expect(response.status).toBe(200); */
+    const { id } = profileCreated.body;
+
+    const response = await request(app).get(`/profiles/${id}`);
+
+    expect(response.status).toBe(200);
+    expect(response.body).toHaveProperty('id');
   });
 });

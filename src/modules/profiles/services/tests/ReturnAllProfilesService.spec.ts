@@ -1,17 +1,9 @@
-import IProfilesRepository from '@modules/profiles/repositories/dtos/IProfilesRepository';
 import FakesProfilesRepository from '@modules/profiles/repositories/fakes/FakesProfilesRepository';
+import AppError from '@shared/errors/AppError';
 import 'reflect-metadata';
 import ReturnAllProfilesService from '../ReturnAllProfilesService';
 
 describe('Return all Registered Profiles', () => {
-//   let fakeProfilesRepository: IProfilesRepository;
-//   let returnAllProfiles: ReturnAllProfilesService;
-
-  //   beforeAll(() => {
-  //     fakeProfilesRepository = new FakesProfilesRepository();
-  //     returnAllProfiles = new ReturnAllProfilesService(fakeProfilesRepository);
-  //   });
-
   it('should be able to return all registered profiles', async () => {
     const fakeProfilesRepository = new FakesProfilesRepository();
     const returnAllProfiles = new ReturnAllProfilesService(fakeProfilesRepository);
@@ -33,6 +25,6 @@ describe('Return all Registered Profiles', () => {
     const returnAllProfiles = new ReturnAllProfilesService(fakeProfilesRepository);
     await expect(
       returnAllProfiles.execute(),
-    ).rejects.toBeInstanceOf(Error);
+    ).rejects.toBeInstanceOf(AppError);
   });
 });

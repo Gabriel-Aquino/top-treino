@@ -5,7 +5,7 @@ import 'reflect-metadata';
 
 export default class FindOneProfileByIdController {
   public async handle(request: Request, response: Response): Promise<Response> {
-    const { id } = request.body;
+    const { id } = request.params;
 
     const findOneProfile = container.resolve(findOneProfileById);
     const profileFound = await findOneProfile.execute({

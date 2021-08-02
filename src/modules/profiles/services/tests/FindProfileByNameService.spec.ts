@@ -1,5 +1,6 @@
 import 'reflect-metadata';
 import FakesProfilesRepository from '@modules/profiles/repositories/fakes/FakesProfilesRepository';
+import AppError from '@shared/errors/AppError';
 import FindProfileByNameService from '../FindProfileByNameService';
 
 describe('FindProfileByName', () => {
@@ -21,6 +22,6 @@ describe('FindProfileByName', () => {
     const findProfileByName = new FindProfileByNameService(fakeProfilesRepository);
     await expect(
       findProfileByName.execute('non-existing-profile-name'),
-    ).rejects.toBeInstanceOf(Error);
+    ).rejects.toBeInstanceOf(AppError);
   });
 });

@@ -1,20 +1,17 @@
-import IBaseDTO from '@shared/dtos/IBaseDTO';
+import IBaseDTOAndRequest from '@shared/dtos/IBaseDTOAndRequest';
 import { inject, injectable } from 'tsyringe';
 import { Profiles } from '../infra/typeorm/entities/Profiles.entities';
 import IProfilesRepository from '../repositories/dtos/IProfilesRepository';
 
-interface IRequest extends IBaseDTO{
-    id: string;
-    name: string;
-    is_active: boolean;
+interface IRequest extends IBaseDTOAndRequest {
 }
 
 @injectable()
 export default class UpdateProfilesService {
   constructor(
-        @inject('ProfilesRepository')
-        private profilesRepository: IProfilesRepository,
-  ) {}
+    @inject('ProfilesRepository')
+    private profilesRepository: IProfilesRepository,
+  ) { }
 
   public async execute({ id, is_active, name }: IRequest): Promise<Profiles> {
     const profile = await this.profilesRepository.findById(id);

@@ -1,6 +1,5 @@
-import IBaseDTO from '@shared/dtos/IBaseDTO';
+import IBaseDTOAndRequest from '@shared/dtos/IBaseDTOAndRequest';
 
-interface IProfilesDTO extends IBaseDTO{
-    name: string;
-}
+type IProfilesDTO = Omit<IBaseDTOAndRequest, 'id' | 'is_active'>;
+
 export default IProfilesDTO;

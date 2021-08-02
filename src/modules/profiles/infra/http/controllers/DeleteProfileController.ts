@@ -7,11 +7,11 @@ export default class DeleteProfileController {
   public async handle(request: Request, response: Response): Promise<Response> {
     const { id } = request.body;
 
-    const deleteNewProfile = container.resolve(deleteProfilesService);
-    const newProfile = await deleteNewProfile.execute({
+    const deleteProfile = container.resolve(deleteProfilesService);
+    const deletedProfile = await deleteProfile.execute({
       id,
     });
 
-    return response.status(200).json(newProfile);
+    return response.status(200).json(deletedProfile);
   }
 }

@@ -15,16 +15,20 @@ describe('Delete Profile Controller', () => {
     await connection.close();
   });
   it('should be able to delete a real profile', async () => {
-    /* const profiles = await request(app).get('/profiles').send({
-      // id selected from database, chosen after CreateProfile integration test running
-      id: '95a04770-c06a-4736-a8dd-308774da5f4b',
+    const profileCreated = await request(app).post('/profiles').send({
+      name: 'Admin-integration-test-deleting',
     });
+    expect(profileCreated.body).toHaveProperty('id');
 
+    const { id } = profileCreated.body;
     const response = await request(app).delete('/profiles').send({
-    // id selected from database, chosen after CreateProfile integration test running
-      id: '95a04770-c06a-4736-a8dd-308774da5f4b',
+      // id selected from database, chosen after CreateProfile integration test running
+      id,
     });
 
-    expect(response.status).toBe(200); */
+    const { is_active } = response.body;
+    expect(response.status).toBe(200);
+    expect(response.body).toHaveProperty('is_active');
+    expect(is_active).toBe(false);
   });
 });

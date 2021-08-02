@@ -1,5 +1,5 @@
 import FakesProfilesRepository from '@modules/profiles/repositories/fakes/FakesProfilesRepository';
-import CreateProfilesService from '../CreateProfilesService';
+import AppError from '@shared/errors/AppError';
 import FindOneProfileByIdService from '../FindOneProfileByIdService';
 
 describe('FindOneProfile', () => {
@@ -21,6 +21,6 @@ describe('FindOneProfile', () => {
 
     await expect(
       findOneProfileById.execute({ id: '' }),
-    ).rejects.toBeInstanceOf(Error);
+    ).rejects.toBeInstanceOf(AppError);
   });
 });
