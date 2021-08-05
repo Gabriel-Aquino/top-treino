@@ -16,19 +16,29 @@ describe('Update Profile Controller', () => {
   });
 
   it('should be able to update profiles from database', async () => {
-    const profilesFound = await request(app).post('/profiles/find_profile').send({
-      name: 'Admin',
+    const profileToUpdate = await request(app).post('/profiles/create_profile').send({
+      name: 'Admin-integration-test-creating',
     });
+
+    expect(profileToUpdate.status).toBe(200);
+    expect(profileToUpdate.body).toHaveProperty('id');
+
+    const { id } = profileToUpdate.body;
+
+    const profilesFound = await request(app).get(`/profiles/find_profile/${id}`);
 
     expect(profilesFound.status).toBe(200);
-    expect(profilesFound.body[0]).toHaveProperty('id');
-    expect(profilesFound.body[0]).toHaveProperty('name');
-    expect(profilesFound.body[0]).toHaveProperty('is_active');
+    expect(profilesFound.body).toHaveProperty('id');
+    expect(profilesFound.body).toHaveProperty('name');
+    expect(profilesFound.body).toHaveProperty('is_active');
 
     const response = await request(app).post('/profiles/update_profile').send({
-      id: profilesFound.body[0].id,
+      id: profilesFound.body.id,
       name: 'Admin-integration-test-update',
-      is_active: profilesFound.body[0].is_active,
+      is_active: profilesFound.body.is_active,
     });
+
+    expect(response.status).toBe(200);
+    expect(response.body.name).not.toBe(profileToUpdate.body.name);
   });
 });
