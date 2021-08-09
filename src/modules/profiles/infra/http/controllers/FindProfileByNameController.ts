@@ -5,7 +5,7 @@ import findProfileByNameService from '@modules/profiles/services/FindProfileByNa
 
 export default class FindOneProfileByNameController {
   public async handle(request: Request, response: Response): Promise<Response> {
-    const { name } = request.body;
+    const { name } = request.params;
 
     const findProfileByName = container.resolve(findProfileByNameService);
     const profileNameFound = await findProfileByName.execute(name);
