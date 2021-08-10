@@ -15,14 +15,14 @@ describe('Find One Profile Controller', () => {
     await connection.close();
   });
   it('should be able to find only one profile from database', async () => {
-    const profileCreated = await request(app).post('/profiles/create_profile').send({
+    const profileCreated = await request(app).post('/profiles').send({
       name: 'Admin-integration-test-findById',
     });
     expect(profileCreated.body).toHaveProperty('id');
 
     const { id } = profileCreated.body;
 
-    const response = await request(app).get(`/profiles/find_profile/${id}`);
+    const response = await request(app).get(`/profiles/findById/${id}`);
 
     expect(response.status).toBe(200);
     expect(response.body).toHaveProperty('id');

@@ -15,16 +15,13 @@ describe('Delete Profile Controller', () => {
     await connection.close();
   });
   it('should be able to delete/deactivate a profile from database', async () => {
-    const profileCreated = await request(app).post('/profiles/create_profile').send({
+    const profileCreated = await request(app).post('/profiles').send({
       name: 'Admin-integration-test-deleting',
     });
     expect(profileCreated.body).toHaveProperty('id');
 
     const { id } = profileCreated.body;
-    const response = await request(app).delete('/profiles/delete_profile').send({
-      // id selected from database, chosen after CreateProfile integration test running
-      id,
-    });
+    const response = await request(app).delete(`/profiles/${id}`).send();
 
     const { is_active } = response.body;
     expect(response.status).toBe(200);

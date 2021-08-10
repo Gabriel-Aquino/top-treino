@@ -16,14 +16,12 @@ describe('Find One Profile By Name Controller', () => {
   });
 
   it('should be able to find profiles by name from database', async () => {
-    const profileCreated = await request(app).post('/profiles/create_profile').send({
+    const profileCreated = await request(app).post('/profiles').send({
       name: 'Admin-integration-test-findByName',
     });
     expect(profileCreated.body).toHaveProperty('id');
-
-    const response = await request(app).post('/profiles/find_profile').send({
-      name: 'Admin',
-    });
+    const { name } = profileCreated.body;
+    const response = await request(app).get(`/profiles/findByName/${name}`).send();
 
     expect(response.status).toBe(200);
     expect(response.body[0]).toHaveProperty('name');

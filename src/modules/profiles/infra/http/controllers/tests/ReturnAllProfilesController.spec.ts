@@ -16,12 +16,12 @@ describe('Find All Profiles Controller', () => {
   });
 
   it('should be able to find all profiles from database', async () => {
-    const profileCreated = await request(app).post('/profiles/create_profile').send({
+    const profileCreated = await request(app).post('/profiles').send({
       name: 'Admin-integration-test-returnAll',
     });
     expect(profileCreated.body).toHaveProperty('id');
 
-    const response = await request(app).get('/profiles/all_profiles').send();
+    const response = await request(app).get('/profiles').send();
 
     expect(response.status).toBe(200);
     expect(response.body[0]).toHaveProperty('name');

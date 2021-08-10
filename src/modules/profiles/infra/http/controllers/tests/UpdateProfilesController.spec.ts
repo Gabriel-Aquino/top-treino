@@ -16,7 +16,7 @@ describe('Update Profile Controller', () => {
   });
 
   it('should be able to update profiles from database', async () => {
-    const profileToUpdate = await request(app).post('/profiles/create_profile').send({
+    const profileToUpdate = await request(app).post('/profiles').send({
       name: 'Admin-integration-test-creating',
     });
 
@@ -25,14 +25,14 @@ describe('Update Profile Controller', () => {
 
     const { id } = profileToUpdate.body;
 
-    const profilesFound = await request(app).get(`/profiles/find_profile/${id}`);
+    const profilesFound = await request(app).get(`/profiles/findById/${id}`);
 
     expect(profilesFound.status).toBe(200);
     expect(profilesFound.body).toHaveProperty('id');
     expect(profilesFound.body).toHaveProperty('name');
     expect(profilesFound.body).toHaveProperty('is_active');
 
-    const response = await request(app).post('/profiles/update_profile').send({
+    const response = await request(app).put('/profiles').send({
       id: profilesFound.body.id,
       name: 'Admin-integration-test-update',
       is_active: profilesFound.body.is_active,

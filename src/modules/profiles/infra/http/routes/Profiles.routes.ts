@@ -9,13 +9,13 @@ import UpdateProfilesController from '../controllers/UpdateProfilesController';
 const profilesRoute = Router();
 const createProfile = new CreateProfileController();
 const deleteProfile = new DeleteProfileController();
-const findOneProfile = new FindOneProfileByIdController();
+const findOneProfileById = new FindOneProfileByIdController();
 const findProfileByName = new FindOneProfileByNameController();
 const returnAllProfilesController = new ReturnAllProfilesController();
 const updateProfiles = new UpdateProfilesController();
 
 profilesRoute.get('/', returnAllProfilesController.handle);
-profilesRoute.get('/findById/:id', findOneProfile.handle);
+profilesRoute.get('/findById/:id', findOneProfileById.handle);
 profilesRoute.get('/findByName/:name', findProfileByName.handle);
 profilesRoute.put('/', updateProfiles.handle);
 profilesRoute.post('/', createProfile.handle); // coloca , e chama o controller

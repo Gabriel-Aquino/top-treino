@@ -15,7 +15,7 @@ describe('Create Profile Controller', () => {
     await connection.close();
   });
   it('should be able to create a real profile', async () => {
-    const response = await request(app).post('/profiles/create_profile').send({
+    const response = await request(app).post('/profiles').send({
       name: 'Admin-integration-test-creating',
     });
 

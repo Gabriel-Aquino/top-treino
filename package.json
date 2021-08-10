@@ -15,14 +15,14 @@
     "dotenv": "^10.0.0",
     "express": "^4.17.1",
     "express-async-errors": "^3.1.1",
+    "factory.ts": "^0.5.2",
+    "faker": "^5.5.3",
     "pg": "^8.6.0",
     "reflect-metadata": "^0.1.13",
     "supertest": "^6.1.4",
     "ts-node-dev": "^1.1.6",
     "tsyringe": "^4.5.0",
     "typeorm": "^0.2.34",
-    "factory.ts": "^0.5.2",
-    "faker": "^5.5.3",
     "uuid": "^8.3.2"
   },
   "devDependencies": {
@@ -43,6 +43,7 @@
     "eslint-config-airbnb-base": "^14.2.1",
     "eslint-plugin-import": "^2.22.1",
     "jest": "^27.0.6",
+    "sqlite3": "^5.0.2",
     "ts-jest": "^27.0.3",
     "typescript": "^4.3.4"
   }
