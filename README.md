@@ -8,7 +8,7 @@ node.JS installed;
 npm and yarn;
 
 # Install Docker 
-To install at Ubuntu, you can follow these steps on the link below (In portuguese): 
+To install it on Ubuntu, you can follow these steps on the link below (In portuguese): 
 
 https://www.digitalocean.com/community/tutorials/como-instalar-e-usar-o-docker-no-ubuntu-18-04-pt
 
