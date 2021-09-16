@@ -8,7 +8,7 @@ import { BEntity } from '@shared/infra/typeorm/entities/BEntity';
 @Entity('users')
 export class Users extends BEntity {
     @Column()
-    full_name: string;
+    name: string;
 
     @Column()
     email: string

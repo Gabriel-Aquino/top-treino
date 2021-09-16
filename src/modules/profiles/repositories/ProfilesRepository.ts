@@ -45,10 +45,6 @@ export default class ProfilesRepository implements IProfilesRepository {
       return findOneProfileByName;
     }
 
-    // async remove(id: string): Promise<void> {
-    //   await this.ormRepository.delete(id);
-    // }
-
     async save(profile: Profiles): Promise<Profiles> {
       return this.ormRepository.save(profile);
     }

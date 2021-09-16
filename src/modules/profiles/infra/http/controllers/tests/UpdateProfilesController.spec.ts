@@ -3,6 +3,7 @@ import request from 'supertest';
 import { app } from '@shared/infra/http/app';
 import { Connection } from 'typeorm';
 import connect from '@shared/infra/typeorm';
+import { createProfileFactory } from '@shared/database/factories/profiles/createProfileFactory';
 
 let connection: Connection;
 
@@ -16,8 +17,9 @@ describe('Update Profile Controller', () => {
   });
 
   it('should be able to update profiles from database', async () => {
+    const createProfilesFactory = createProfileFactory.build();
     const profileToUpdate = await request(app).post('/profiles').send({
-      name: 'Admin-integration-test-creating',
+      name: createProfilesFactory.name,
     });
 
     expect(profileToUpdate.status).toBe(200);
@@ -34,7 +36,7 @@ describe('Update Profile Controller', () => {
 
     const response = await request(app).put('/profiles').send({
       id: profilesFound.body.id,
-      name: 'Admin-integration-test-update',
+      name: `${createProfilesFactory.name}_updated`,
       is_active: profilesFound.body.is_active,
     });
 

@@ -3,6 +3,7 @@ import request from 'supertest';
 import { app } from '@shared/infra/http/app';
 import { Connection } from 'typeorm';
 import connect from '@shared/infra/typeorm';
+import { createProfileFactory } from '@shared/database/factories/profiles/createProfileFactory';
 
 let connection: Connection;
 
@@ -15,8 +16,9 @@ describe('Find One Profile Controller', () => {
     await connection.close();
   });
   it('should be able to find only one profile from database', async () => {
+    const createProfilesFactory = createProfileFactory.build();
     const profileCreated = await request(app).post('/profiles').send({
-      name: 'Admin-integration-test-findById',
+      name: createProfilesFactory.name,
     });
     expect(profileCreated.body).toHaveProperty('id');
 

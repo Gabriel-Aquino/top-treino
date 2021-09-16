@@ -3,6 +3,8 @@
 # What do you need?
 Docker installed;
 
+utilizar factory nos testes de integração
+
 node.JS installed;
 
 npm and yarn;
