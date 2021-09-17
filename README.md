@@ -26,4 +26,4 @@ to run container:
 
 # Diagram
 
-https://whimsical.com/embed/W4iJa9xfXHbynDSfHFs33u
+![alt text](https://github.com/Gabriel-Aquino/top-treino/blob/main/src/shared/images/top-treino.png)
