@@ -26,4 +26,4 @@ to run container:
 
 # Diagram
 
-<iframe style="border:none" width="800" height="450" src="https://whimsical.com/embed/W4iJa9xfXHbynDSfHFs33u"></iframe>
+https://whimsical.com/embed/W4iJa9xfXHbynDSfHFs33u
