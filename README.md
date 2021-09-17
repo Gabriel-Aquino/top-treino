@@ -23,3 +23,7 @@ note: you should to check if the port you has been chosen is avaliable.
 to run container:
 
 > docker start pg-my-project
+
+# Diagram
+
+![alt text](https://whimsical.com/embed/W4iJa9xfXHbynDSfHFs33u)
