@@ -26,4 +26,4 @@ to run container:
 
 # Diagram
 
-![alt text](https://whimsical.com/embed/W4iJa9xfXHbynDSfHFs33u)
+https://whimsical.com/embed/W4iJa9xfXHbynDSfHFs33u
